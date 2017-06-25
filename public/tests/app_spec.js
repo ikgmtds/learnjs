@@ -25,4 +25,10 @@ describe('LearnJS', function () {
             expect(view.text()).toEqual('Problem #1 coming soon!');
         });
     });
+    it('subscrives to the hash chenges event',function(){
+        learnjs.appOnReady();
+        spyOn(learnjs,'showView');
+        $(window).trigger('hashchange');
+        expect(learnjs.showView).toHaveBeenCalledWith(window.location.hash);
+    });
 });
