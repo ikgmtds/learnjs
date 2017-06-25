@@ -1,6 +1,16 @@
 'use strict';
 var learnjs = {}
+
+learnjs.problemView = function(){
+    return $('<div class="problem-view">').text('comming soon!');
+}
+
 learnjs.showView = function(hash){
-    var problemView = $('<div class="problem-view">').text('comingsoon!');
-    $('.view-container').empty().append(ProblemView);
+    var routes = {
+        '#problem-1' : learnjs.problemView
+    };
+    var viewFn = routes[hash];
+    if(viewFn){
+        $('.view-container').empty().append(viewFn());
+    }
 }
